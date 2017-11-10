@@ -10,7 +10,7 @@
 		<h1>Belajar HTML</h1>
 		<h1 id="mercubuana">Mercu Buana</h1>
 		<h1 class="mercu"></h1>
-		<a href="#" class="button">Link Button</a>
+		<a href="#" class="button">Link Button Add</a>
 		<table>
 		<thead>
       <tr>
