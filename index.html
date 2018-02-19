@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+ <head>
+
+	<style>
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input {display:none;}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 26px;
+  bottom: 0;
+  background-color: #2196F3;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #ccc;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #ccc;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(30px);
+  -ms-transform: translateX(30px);
+  transform: translateX(30px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+</style>
+
+ </head>
+<body>
+  <h1>Control LED light</h1>
+    <label class="switch">
+     <input type="checkbox" id="light">
+     <span class="slider round"></span>
+   </label>
+   <label class="switch">
+     <input type="checkbox" id="light2">
+     <span class="slider round"></span>
+   </label>
+   <label class="switch">
+     <input type="checkbox" id="light3">
+     <span class="slider round"></span>
+   </label>
+   <label class="switch">
+     <input type="checkbox" id="light4">
+     <span class="slider round"></span>
+   </label>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
+<script>
+var socket = io();
+window.addEventListener("load", function(){
+  var lightbox = document.getElementById("light"); 
+  lightbox.addEventListener("change", function() {
+    socket.emit("light", Number(this.checked));
+  });
+  var lightbox2 = document.getElementById("light2"); 
+  lightbox2.addEventListener("change", function() {
+    socket.emit("light2", Number(this.checked));
+  });
+  var lightbox3 = document.getElementById("light3"); 
+  lightbox3.addEventListener("change", function() {
+    socket.emit("light3", Number(this.checked));
+  });
+  var lightbox4 = document.getElementById("light4"); 
+  lightbox4.addEventListener("change", function() {
+    socket.emit("light4", Number(this.checked));
+  });
+});
+</script>
+</html>
+</body>
+</html>
